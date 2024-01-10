@@ -66,48 +66,47 @@ while (1) {
 ### `BMP180`
 ```c
 typedef  struct {
-// I2c handle
-I2C_HandleTypeDef  *hi2c;
-// param
-HAL_StatusTypeDef  device_id_status;
-int  OSS;
-int32_t  B5;
-// Raw data
-uint32_t  raw_pressure, raw_temperature;
-// Processed data;
-uint32_t  pressure_Pa;
-float  temp_C;
-float  elevation_M;
-// Calibration data struct
-CALIBRATION_DATA  calibration_data;
+	// I2c handle
+	I2C_HandleTypeDef  *hi2c;
+	// param
+	HAL_StatusTypeDef  device_id_status;
+	int  OSS;
+	int32_t  B5;
+	// Raw data
+	uint32_t  raw_pressure, raw_temperature;
+	// Processed data;
+	uint32_t  pressure_Pa;
+	float  temp_C;
+	float  elevation_M;
+	// Calibration data struct
+	CALIBRATION_DATA  calibration_data;
 } BMP180;
 ```
 ### `CALIBRATION_DATA`
 ```c
 typedef  struct {
-int16_t  AC1;
-int16_t  AC2;
-int16_t  AC3;
-uint16_t  AC4;
-uint16_t  AC5;
-uint16_t  AC6;
-int16_t  B1;
-int16_t  B2;
-int16_t  MB;
-int16_t  MC;
-int16_t  MD;
+	int16_t  AC1;
+	int16_t  AC2;
+	int16_t  AC3;
+	uint16_t  AC4;
+	uint16_t  AC5;
+	uint16_t  AC6;
+	int16_t  B1;
+	int16_t  B2;
+	int16_t  MB;
+	int16_t  MC;
+	int16_t  MD;
 } CALIBRATION_DATA;
 ```
 This is used to store the calibration data of the BMP180 in the Initialization function. It can be accessed from `BMP180->calibration_data`.
 ### `CONTROL_REGISTER`
 ```c
 typedef  enum {
-
-CTRL_REG_TEMPERATURE  =  0x2E,
-CTRL_REG_PRESSURE_OSS_0  =  0x34, // ultra low power
-CTRL_REG_PRESSURE_OSS_1  =  0x74, // standard
-CTRL_REG_PRESSURE_OSS_2  =  0xB4, // high res
-CTRL_REG_PRESSURE_OSS_3  =  0xF4, // ultra high res
+	CTRL_REG_TEMPERATURE  =  0x2E,
+	CTRL_REG_PRESSURE_OSS_0  =  0x34, // ultra low power
+	CTRL_REG_PRESSURE_OSS_1  =  0x74, // standard
+	CTRL_REG_PRESSURE_OSS_2  =  0xB4, // high res
+	CTRL_REG_PRESSURE_OSS_3  =  0xF4, // ultra high res
 } CONTROL_REGISTER;
 ```
 Used to set the resolution of the pressure sensor. Use `CTRL_REG_PRESSURE_OSS_X` when calling `BMP180_ReadPressure()` or `BMP180_ReadRawPressure()`.
