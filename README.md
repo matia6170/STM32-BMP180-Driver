@@ -29,6 +29,7 @@ This driver gives full control of the sensor **eg.(read temp(Celcius), read pres
 3. Run anything else.
 
 ## Examples
+Example code is also available [here](https://github.com/matia6170/STM32-BMP180-Driver-Test-Example)
 ### Initializing
 ```c
 // Create struct
